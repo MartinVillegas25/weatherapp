@@ -16,7 +16,7 @@ app.set('views', path.join(__dirname + '/views'));
 app.set('view engine', 'hbs');
 app.use(express.static(__dirname + '/public'));
 
-app.listen(3000, () => {
+app.listen(process.env.PORT || 8080, () => {
   console.log('listening on port 3000')
 })
 
