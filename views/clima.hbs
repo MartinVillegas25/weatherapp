@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clima</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body class="container-fluid">
+    <section id="tablaclima" class="row">
+        <div id="clima1" class="col-12 col-sm-4">
+            
+            <h1 class="text-light m-4 text-center">{{cuidad}}</h1>
+            <h2 class="text-light text-center mb-4">Temperatura Actual</h2>
+            <h3 class="tempactual text-light text-center mb-4 h1">{{temp}} °C</h3>
+            <h3 id="descripcion" class="text-light text-center mb-4 h6"> {{descripcion}}</h3>
+            <img id="img" class="imgTempActual" src="/imgestados/nublado.png"  alt="">
+            <h3 id="hora" class="text-center text-light">{{hora}}</h3>
+            
+        </div>
+        <div id="clima2" class="col-12 col-sm-8 position-relative">
+            <a href="/" class="btn btn-primary position-absolute top-0 end-0 m-2 ">Buscar otra Ciudad</a>
+            <div class="table-responsive mt-4">
+                
+            <table class="table caption-top table-bordered">
+                <br>
+                <caption class="text-light text-center mb-4 h2">Detalle del Clima</caption>
+                        <thead class="table-dark">
+                            <tr>
+                                <th scope="col">Dia</th>
+                                <th scope="col">Temp</th>
+                                <th class="tabla" scope="col">Presion</th>
+                                <th scope="col" >Humedad</th>
+                                <th class="tabla" scope="col">Viento</th>
+                                <th scope="col">Descripcion</th>
+                            </tr>
+                        </thead>
+                
+                        <tbody id="admin-productos">
+                            {{#if data}}
+                            {{#each data}}
+                            <tr>
+                                <th scope="row">{{fecha}}</th>
+                                <td>{{temp}}</td>
+                                <td class="tabla" >{{presion}}</td>
+                                <td >{{humedad}}</td>
+                                <td class="tabla" >{{viento}} </td>
+                                <td> {{descripcion}}  </td>
+                            </tr>
+                            {{/each}}
+                            {{else}} 
+                            <tr>
+                                <td colspan="7">
+                                    <p>no hay clima</p>
+                                </td>
+                            </tr>
+                            {{/if}}
+                
+                          
+                        </tbody>
+                
+                    </table>
+                   
+                
+                </div>
+        </div>
+    </section>
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+    <script src="./helpers/app.js"></script>
+</body>
+</html>
