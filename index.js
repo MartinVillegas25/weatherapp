@@ -1,6 +1,6 @@
 const express = require('express');
 require('dotenv').config();
-const {clima, dia}=require('./controller/busqueda');
+const {clima, dia, lugares,climaActual}=require('./controller/busqueda');
 const hbs = require('hbs');
 const path = require('path');
 
@@ -29,15 +29,32 @@ app.get('/', (req, res) => {
 
 app.post('/enviar', async (req, res)=>{
     const {ciudad} = req.body;
+    
+    const city = await lugares(ciudad);
+    
+    if(city){
+      res.render('index',{
+        info: city
+      })
+    }else{
+      res.render('index',{
+        "alerta": "ciudad no encontrada"
+      })
+   }
+    
+  });
+
+
+  app.post('/ciudad', async (req, res)=>{
+    const {city} = req.body;
     const time = await dia();
-    const weather = await clima(ciudad)
-    
-    
+    const weather = await clima(city)
+    const actual = await climaActual(city)
     if(weather){
         res.render('clima',{
-          "cuidad": JSON.stringify(ciudad).toUpperCase().replace(/\"/g, ""),
-          "temp":JSON.parse(weather[0].temp).toFixed(1),
-          "descripcion":JSON.stringify(weather[0].descripcion).replace(/\"/g, "").toUpperCase(),
+          "cuidad": JSON.stringify(city).toUpperCase().replace(/\"/g, ""),
+          "temp":JSON.parse(actual.temp).toFixed(1),
+          "descripcion":JSON.stringify(actual.descripcion).replace(/\"/g, "").toUpperCase(),
           "hora":JSON.stringify(time),
           data:  weather         
         })
@@ -47,3 +64,5 @@ app.post('/enviar', async (req, res)=>{
        })
     }
   })
+  
+  

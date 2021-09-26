@@ -1,4 +1,8 @@
 
+
+
+
+
  function fotoClima () {
     let estado =  document.querySelector('#descripcion').innerHTML;
     const img = document.querySelector("#img");
@@ -23,3 +27,5 @@
 }
 
 fotoClima()
+
+

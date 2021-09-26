@@ -14,8 +14,17 @@
    
 }
 #app{
-    height:250px;
+    height:auto;
     border-radius: 25% 10%;
+}
+
+.seleccion:hover{
+    background-color: #0d6efd;
+}
+
+#seleccion{
+    overflow: hidden;
+
 }
 
 

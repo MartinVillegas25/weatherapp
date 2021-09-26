@@ -4,7 +4,7 @@ const axios = require('axios');
 
 const clima = async (ciudad)=>{
     try {
-      const resp= await axios.get(`https://api.openweathermap.org/data/2.5/forecast?q=${ciudad}&autocomplete=true&lang=sp&appid=${process.env.APIKEY}`)
+      const resp= await axios.get(`https://api.openweathermap.org/data/2.5/forecast?q=${ciudad}&lang=sp&appid=${process.env.APIKEY}`)
             const {list,city}=resp.data;
             
             return list.map(e => ({
@@ -26,7 +26,7 @@ const clima = async (ciudad)=>{
     } 
 }
 
-const dia = async ()=>{
+const dia =  ()=>{
     let today = new Date();
     let dd = today.getDate();
     let mm = today.getMonth() + 1; //January is 0!
@@ -45,7 +45,38 @@ const dia = async ()=>{
 }
 
 
+const lugares = async (lugar)=> {
+  try {    
+    const resp = await axios.get(`https://api.mapbox.com/geocoding/v5/mapbox.places/${lugar}.json?access_token=${process.env.MAPBOX_KEY}&cachebuster=1626462005037&autocomplete=true&limit=5&language=es`);
+     
+    return resp.data.features.map( lugar =>({
+        nombre: lugar.place_name,
+        
+    }));
+    
+} catch (err) {
+   console.error(err);
+}
+}
+
+const climaActual = async(lugar) => {
+  try {
+    const respuesta = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${lugar}&lang=sp&appid=${process.env.APIKEY}`);
+    const {main, weather} = respuesta.data;
+            
+    return  ({
+       temp: JSON.parse(main.temp-273).toFixed(1),    
+       descripcion:weather[0].description,
+    });
+    
+  } catch (error) {
+    console.error(error);
+  }
+}
+
 module.exports={
     clima,
     dia,
+    lugares,
+    climaActual
 }
