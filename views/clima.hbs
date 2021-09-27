@@ -7,6 +7,16 @@
     <title>Clima</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/styles.css">
+     <meta name="description" content="Aplicacion del clima realizada con NodeJs y consumo de APIs">
+      <meta property="og:title" content="Aplicacion del clima">
+      <meta property="og:description" content="Aplicacion del Clima con NodeJs y APIs">
+      <meta property="twitter:image" content="/css/icon.png">
+      <meta property="twitter:title" content="Aplicacion del clima">
+      <meta property="twitter:description" content="Aplicacion del Clima con NodeJs y APIs">
+      <meta property="og:image" content="/css/icon.png">
+      <meta name="robot" content="index">
+      <meta name="keywords" content="Clima, weather,app, apis, temperatura, temperature, wind, viento, pronostico">
+      <meta name="author" content="Martin Villegas">
 </head>
 <body class="container-fluid">
     <section id="tablaclima" class="row">
@@ -18,6 +28,7 @@
             <h3 id="descripcion" class="text-light text-center mb-4 h6"> {{descripcion}}</h3>
             <img id="img" class="imgTempActual" src="/imgestados/nublado.png"  alt="">
             <h3 id="hora" class="text-center text-light">{{hora}}</h3>
+            <a class="linkedin" href="https://www.linkedin.com/in/fullstack-nodejs/">Martin Villegas</a>
             
         </div>
         <div id="clima2" class="col-12 col-sm-8 position-relative">
@@ -68,6 +79,7 @@
         </div>
     </section>
     
+      
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
     <script src="./helpers/app.js"></script>

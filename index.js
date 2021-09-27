@@ -37,6 +37,7 @@ app.post('/enviar', async (req, res)=>{
         info: city
       })
     }else{
+      console.log('No city')
       res.render('index',{
         "alerta": "ciudad no encontrada"
       })

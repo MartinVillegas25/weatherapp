@@ -20,6 +20,7 @@
 
 .seleccion:hover{
     background-color: #0d6efd;
+    margin-bottom: 2px;
 }
 
 #seleccion{
@@ -38,7 +39,7 @@ h4{
 }
 
 .seccion {
-    height:100vh;
+    height:100%;
 }
 
 
@@ -73,5 +74,15 @@ h4{
     .tabla{
         display:none;
     }
+}
+
+footer{
+    width: 100%;
+    margin-bottom: 0;
+}
+
+.linkedin{
+    display:block;
+    text-align:center;
 }
 

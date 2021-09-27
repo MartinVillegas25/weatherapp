@@ -47,7 +47,7 @@ const dia =  ()=>{
 
 const lugares = async (lugar)=> {
   try {    
-    const resp = await axios.get(`https://api.mapbox.com/geocoding/v5/mapbox.places/${lugar}.json?access_token=${process.env.MAPBOX_KEY}&cachebuster=1626462005037&autocomplete=true&limit=5&language=es`);
+    const resp = await axios.get(`https://api.mapbox.com/geocoding/v5/mapbox.places/${lugar}.json?access_token=${process.env.MAPBOX_KEY}&cachebuster=1626462005037&autocomplete=true&limit=10&language=es`);
      
     return resp.data.features.map( lugar =>({
         nombre: lugar.place_name,
